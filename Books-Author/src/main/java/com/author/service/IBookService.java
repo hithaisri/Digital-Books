@@ -3,7 +3,7 @@ package com.author.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.author.model.Books;
+import com.author.entity.Books;
 
 public interface IBookService {
 

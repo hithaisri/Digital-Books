@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.author.entity.Books;
 import com.author.exception.ResourceNotFoundException;
-import com.author.model.Books;
 
 @Service
 public class BookServiceImpl implements IBookService{

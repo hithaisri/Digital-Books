@@ -1,9 +1,12 @@
 package com.author.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.author.model.User;
+import com.author.entity.User;
+import com.author.exception.ResourceNotFoundException;
 
 @Service
 public class UserServiceImpl implements IUserService{
@@ -13,7 +16,12 @@ public class UserServiceImpl implements IUserService{
 
 	@Override
 	public User saveUser(User user) {
-		User newUser=userRepository.save(user);
+		User newUser=null;
+		User exisitngUser=userRepository.findByEmail(user.getEmail());
+		if(exisitngUser==null)
+			 newUser=userRepository.save(user);
+		else 
+			throw new ResourceNotFoundException("User Duplicate Entry!");
 		return newUser;
 	}
 
@@ -27,8 +35,10 @@ public class UserServiceImpl implements IUserService{
 		User existingUser=userRepository.findByEmailAndPassword(email, password);
 		return existingUser;
 	}
-	
-	
-	
+
+	@Override
+	public List<User> getAllUsers() {
+		return userRepository.findAll();
+	}
 	
 }

@@ -1,6 +1,8 @@
 package com.author.service;
 
-import com.author.model.User;
+import java.util.List;
+
+import com.author.entity.User;
 
 public interface IUserService {
 
@@ -9,4 +11,6 @@ public interface IUserService {
 	public User getUser(Integer id);
 
 	public User checkUserExists(String email, String password);
+
+	public List<User> getAllUsers();
 }
