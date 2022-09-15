@@ -8,10 +8,12 @@ import com.author.entity.Books;
 
 public interface IBookRepoistory extends JpaRepository<Books, Integer>{
 
-	List<Books> findByTitle(String title);
+	List<Books> findByTitleAndActive(String title,boolean active);
 	
-	List<Books> findByPublisher(String publisher);
+	List<Books> findByPublisherAndActive(String publisher,boolean active);
 	
-	List<Books> findByPrice(Integer price);
+	List<Books> findByPriceAndActive(Integer price,boolean active);
+	
+	List<Books> findByAuthorAndActive(String author,boolean active);
 	
 }

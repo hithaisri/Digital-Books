@@ -1,4 +1,4 @@
-package com.author.entity;
+package com.reader.entity;
 
 import java.util.Date;
 

@@ -75,8 +75,8 @@ public class BooksController {
 	}
 	
 	@GetMapping("/search")
-	public List<Books> searchBooks(@RequestParam(required=false) String title,@RequestParam(required=false) String publisher,@RequestParam(required=false) Integer price) {
-		return bookService.searchBook(title,publisher,price);
+	public List<Books> searchBooks(@RequestParam(required=false) String title,@RequestParam(required=false) String author,@RequestParam(required=false) Integer price) {
+		return bookService.searchBook(title,author,price);
 	}
 	
 }

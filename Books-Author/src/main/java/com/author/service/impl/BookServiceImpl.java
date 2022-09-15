@@ -53,20 +53,21 @@ public class BookServiceImpl implements IBookService{
 		existingBook.setPublisher(book.getPublisher());
 		existingBook.setActive(book.getActive());
 		existingBook.setContent(book.getContent());
-
+		existingBook.setAuthor(book.getAuthor());
+		existingBook.setPublishedDate(book.getPublishedDate());
 		bookRepoistory.save(existingBook);
 		return existingBook;
 	}
 
 	@Override
-	public List<Books> searchBook(String title, String publisher, Integer price) {
+	public List<Books> searchBook(String title, String author, Integer price) {
 		List<Books> books=null;
 		if(title!=null && !title.equals("")) {
-			books=bookRepoistory.findByTitle(title);
-		}else if(publisher!=null && !publisher.equals("")) {
-			books=bookRepoistory.findByPublisher(publisher);
+			books=bookRepoistory.findByTitleAndActive(title,true);
+		}else if(author!=null && !author.equals("")) {
+			books=bookRepoistory.findByAuthorAndActive(author,true);
 		}else if(price!=null && price>0) {
-			books=bookRepoistory.findByPrice(price);
+			books=bookRepoistory.findByPriceAndActive(price,true);
 		}
 		return books;
 	}

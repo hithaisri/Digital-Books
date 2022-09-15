@@ -19,6 +19,6 @@ public interface IBookService {
 
 	Books updateBook(Books book, Integer id);
 
-	List<Books> searchBook(String title, String publisher, Integer price);
+	List<Books> searchBook(String title, String author, Integer price);
 
 }
