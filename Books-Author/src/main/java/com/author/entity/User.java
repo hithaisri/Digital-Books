@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Entity
 public class User {
 
@@ -22,6 +23,8 @@ public class User {
 	
 	private String phone;
 
+	private Integer role;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -70,7 +73,16 @@ public class User {
 		this.phone = phone;
 	}
 
-	public User(Integer id, String firstName, String lastName, String email, String password, String phone) {
+	public Integer getRole() {
+		return role;
+	}
+
+	public void setRole(Integer role) {
+		this.role = role;
+	}
+
+	public User(Integer id, String firstName, String lastName, String email, String password, String phone,
+			Integer roleId) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -78,6 +90,7 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.phone = phone;
+		this.role = roleId;
 	}
 
 	public User() {

@@ -1,4 +1,4 @@
-package com.author.service;
+package com.author.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.author.entity.Books;
 import com.author.exception.ResourceNotFoundException;
+import com.author.repository.IBookRepoistory;
+import com.author.service.IBookService;
 
 @Service
 public class BookServiceImpl implements IBookService{
@@ -54,6 +56,19 @@ public class BookServiceImpl implements IBookService{
 
 		bookRepoistory.save(existingBook);
 		return existingBook;
+	}
+
+	@Override
+	public List<Books> searchBook(String title, String publisher, Integer price) {
+		List<Books> books=null;
+		if(title!=null && !title.equals("")) {
+			books=bookRepoistory.findByTitle(title);
+		}else if(publisher!=null && !publisher.equals("")) {
+			books=bookRepoistory.findByPublisher(publisher);
+		}else if(price!=null && price>0) {
+			books=bookRepoistory.findByPrice(price);
+		}
+		return books;
 	}
 
 	

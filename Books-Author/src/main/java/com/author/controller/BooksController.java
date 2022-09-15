@@ -6,18 +6,23 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.author.entity.Books;
 import com.author.service.IBookService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/book")
 public class BooksController {
 
 	
@@ -26,8 +31,12 @@ public class BooksController {
 	
 	
 	@PostMapping("/saveBook")
-	public Integer saveBook(@RequestBody Books book) {
-		return bookService.saveBook(book);
+	public String saveBook(@RequestBody Books book) {
+		String response="Failed to save book!";
+		Integer id=bookService.saveBook(book);
+		if(id!=null && id>0)
+			response="Book saved";
+		return response;
 	}
 	
 	@GetMapping("/getBook/{id}")
@@ -63,6 +72,11 @@ public class BooksController {
 	public ResponseEntity<Books> updateBook(@RequestBody Books book,@PathVariable Integer id){
 		return new ResponseEntity<Books>(bookService.updateBook(book,id),HttpStatus.OK);
 		
+	}
+	
+	@GetMapping("/search")
+	public List<Books> searchBooks(@RequestParam(required=false) String title,@RequestParam(required=false) String publisher,@RequestParam(required=false) Integer price) {
+		return bookService.searchBook(title,publisher,price);
 	}
 	
 }

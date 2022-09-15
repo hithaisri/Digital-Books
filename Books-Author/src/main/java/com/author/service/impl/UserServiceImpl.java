@@ -1,4 +1,4 @@
-package com.author.service;
+package com.author.service.impl;
 
 import java.util.List;
 
@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.author.entity.User;
 import com.author.exception.ResourceNotFoundException;
+import com.author.repository.IUserRepository;
+import com.author.service.IUserService;
 
 @Service
 public class UserServiceImpl implements IUserService{
