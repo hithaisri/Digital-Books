@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.author.entity.AuthResponse;
+import com.author.entity.LoginRequest;
 import com.author.entity.User;
 import com.author.service.IUserService;
 
@@ -40,12 +42,9 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<String> checkUserLogin(@RequestBody User user) {
-		User loggedInUser=userService.checkUserExists(user.getEmail(),user.getPassword());
-		if(loggedInUser!=null) 
-			return new ResponseEntity<String>("Successfully Logged In!",HttpStatus.OK);
-		else 
-			return new ResponseEntity<String>("Failed to Login! Inactive/Invalid User",HttpStatus.BAD_REQUEST);
+	public ResponseEntity<AuthResponse> checkUserLogin(@RequestBody LoginRequest loginRequest) {
+		AuthResponse response=userService.checkUserExists(loginRequest.getEmail(),loginRequest.getPassword());
+		return new ResponseEntity<AuthResponse>(response,HttpStatus.OK);
 	}
 	
 	@GetMapping("/getUsers")

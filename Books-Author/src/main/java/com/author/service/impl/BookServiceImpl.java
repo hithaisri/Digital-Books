@@ -30,7 +30,7 @@ public class BookServiceImpl implements IBookService{
 	
 	@Override
 	public List<Books> getAllBooks(){
-		return bookRepoistory.findAll();
+		return bookRepoistory.findByActive(true);
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class BookServiceImpl implements IBookService{
 		existingBook.setPublisher(book.getPublisher());
 		existingBook.setActive(book.getActive());
 		existingBook.setContent(book.getContent());
-		existingBook.setAuthor(book.getAuthor());
+		existingBook.setAuthorId(book.getAuthorId());
 		existingBook.setPublishedDate(book.getPublishedDate());
 		bookRepoistory.save(existingBook);
 		return existingBook;
@@ -65,11 +65,16 @@ public class BookServiceImpl implements IBookService{
 		if(title!=null && !title.equals("")) {
 			books=bookRepoistory.findByTitleAndActive(title,true);
 		}else if(author!=null && !author.equals("")) {
-			books=bookRepoistory.findByAuthorAndActive(author,true);
+			books=bookRepoistory.getByAuthorAndActive(author,true);
 		}else if(price!=null && price>0) {
 			books=bookRepoistory.findByPriceAndActive(price,true);
 		}
 		return books;
+	}
+
+	@Override
+	public List<Books> getAllBooksByAuthor(Integer id) {
+		return bookRepoistory.findByAuthorIdAndActive(id,true);
 	}
 
 	

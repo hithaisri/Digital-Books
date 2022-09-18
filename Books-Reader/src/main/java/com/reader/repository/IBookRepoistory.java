@@ -1,11 +1,11 @@
-package com.author.repository;
+package com.reader.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.author.entity.Books;
+import com.reader.entity.Books;
 
 public interface IBookRepoistory extends JpaRepository<Books, Integer>{
 
@@ -14,8 +14,6 @@ public interface IBookRepoistory extends JpaRepository<Books, Integer>{
 	List<Books> findByPublisherAndActive(String publisher,boolean active);
 
 	List<Books> findByPriceAndActive(Integer price,boolean active);
-
-	//List<Books> findByAuthorAndActive(String author,boolean active);
 
 	List<Books> findByActive(Boolean active);
 	
