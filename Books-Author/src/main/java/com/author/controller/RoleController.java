@@ -29,7 +29,7 @@ public class RoleController {
 	
 	@PostMapping
 	public ResponseEntity<String> saveRole(@RequestBody Role role) {
-		Role savedRole=roleService.saveRole(role);
+		Role savedRole=roleService.saveRole(role);   //save role
 		if(savedRole!=null)
 			return new ResponseEntity<String>("Successfully added Role!",HttpStatus.OK);
 		else 
