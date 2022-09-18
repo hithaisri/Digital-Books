@@ -26,12 +26,11 @@ public class Books {
 	
     private Date publishedDate;
 	
-	private String author;
+	private Integer authorId;
 	
 	private Boolean active;
 	
 	private String content;
-	
 	
 
 	public Integer getId() {
@@ -106,12 +105,12 @@ public class Books {
 		this.publishedDate = publishedDate;
 	}
 
-	public String getAuthor() {
-		return author;
+	public Integer getAuthorId() {
+		return authorId;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthorId(Integer author) {
+		this.authorId = author;
 	}
 
 	public Books() {
@@ -119,7 +118,7 @@ public class Books {
 	}
 
 	public Books(Integer id, String title, String category, String image, Integer price, String publisher,
-			Boolean active, String content,Date publishedDate,String author) {
+			Boolean active, String content,Date publishedDate,Integer authorId) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -130,7 +129,7 @@ public class Books {
 		this.active = active;
 		this.content = content;
 		this.publishedDate=publishedDate;
-		this.author=author;
+		this.authorId=authorId;
 	}
 	
 	

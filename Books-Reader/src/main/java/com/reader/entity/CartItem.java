@@ -16,18 +16,12 @@ public class CartItem {
 	
 	private Integer bookId;
 	
-	private Integer price;
+	private Integer unitPrice;
 	
-	private Integer quatity;
+	private Integer quantity;
 	
-
-	public Integer getQuatity() {
-		return quatity;
-	}
-
-	public void setQuatity(Integer quatity) {
-		this.quatity = quatity;
-	}
+	private String bookName;
+	
 
 	public Integer getId() {
 		return id;
@@ -53,14 +47,29 @@ public class CartItem {
 		this.bookId = bookId;
 	}
 
-	public Integer getPrice() {
-		return price;
+	public Integer getUnitPrice() {
+		return unitPrice;
 	}
 
-	public void setPrice(Integer price) {
-		this.price = price;
+	public void setUnitPrice(Integer unitPrice) {
+		this.unitPrice = unitPrice;
 	}
-	
-	
 
+	public String getBookName() {
+		return bookName;
+	}
+
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	
 }

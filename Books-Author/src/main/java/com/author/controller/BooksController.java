@@ -84,4 +84,9 @@ public class BooksController {
 		return bookService.searchBook(title,author,price);
 	}
 	
+	@GetMapping("/getMyBooks/{id}")
+	public List<Books> getMyBooks(@PathVariable Integer id) {
+		return bookService.getMyBooks(id);
+	}
+	
 }

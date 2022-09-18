@@ -18,7 +18,6 @@ public interface IBookRepoistory extends JpaRepository<Books, Integer>{
 	List<Books> findByActive(Boolean active);
 	
 	List<Books> findByAuthorIdAndActive(Integer authorId,Boolean active);
-	
 
 	@Query(value="select book.* from books book,user u where book.author_id=u.id and book.active=:flag and u.first_name=:author",nativeQuery=true)
 	List<Books> getByAuthorAndActive(String author, boolean flag);

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.author.entity.Books;
 import com.author.exception.ResourceNotFoundException;
 import com.author.repository.IBookRepoistory;
+import com.author.repository.ICartItemRepository;
 import com.author.service.IBookService;
 
 @Service
@@ -16,6 +17,9 @@ public class BookServiceImpl implements IBookService{
 
 	@Autowired
 	IBookRepoistory bookRepoistory;
+	
+	@Autowired
+	ICartItemRepository cartItemRepo;
 	
 	@Override
 	public Integer saveBook(Books book) {
@@ -77,5 +81,10 @@ public class BookServiceImpl implements IBookService{
 		return bookRepoistory.findByAuthorIdAndActive(id,true);
 	}
 
+	@Override
+	public List<Books> getMyBooks(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

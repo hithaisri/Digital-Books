@@ -22,6 +22,7 @@ public interface IBookService {
 	List<Books> searchBook(String title, String author, Integer price);
 
 	List<Books> getAllBooksByAuthor(Integer id);
-	
+
+	List<Books> getMyBooks(Integer id);
 
 }
